@@ -1,7 +1,6 @@
 class User:
-    def __init__(self, name, email, account_balance):
+    def __init__(self, name):
         self.name = name
-        self.email = email
         self.account_balance = 0
 
     def make_deposit(self, amount):
@@ -16,12 +15,15 @@ class User:
     def transfer_money(self, other_user, amount):
         self.account_balance -= amount
         other_user.account_balance += amount
+        print("The updated balances after transfer:")
+        self.display_user_balance()
+        other_user.display_user_balance()
 
 
 
-diana = User('Diana', 'dianka759@gmailcom', 0)
-kiwi = User('Kiwi', 'kiwi@theGreenChicken.com', 0)
-angelika = User('Angelika','andzia@wp.pl', 0)
+diana = User('Diana')
+kiwi = User('Kiwi')
+angelika = User('Angelika')
 
 diana.make_deposit(100)
 diana.make_deposit(5)
@@ -43,7 +45,4 @@ angelika.display_user_balance()
 
 
 print("")
-print("The updated balances after transfer:")
 diana.transfer_money(angelika, 5)
-diana.display_user_balance()
-angelika.display_user_balance()
