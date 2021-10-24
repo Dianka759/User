@@ -5,12 +5,15 @@ class User:
 
     def make_deposit(self, amount):
         self.account_balance += amount
+        return self
 
     def make_withdrawal(self, amount):
         self.account_balance -= amount
+        return self
 
     def display_user_balance(self):
         print(f"User: {self.name}, Account balance: {self.account_balance}")
+        return self
 
     def transfer_money(self, other_user, amount):
         self.account_balance -= amount
@@ -20,29 +23,16 @@ class User:
         other_user.display_user_balance()
 
 
-
+#  defining users
 diana = User('Diana')
 kiwi = User('Kiwi')
 angelika = User('Angelika')
 
-diana.make_deposit(100)
-diana.make_deposit(5)
-diana.make_deposit(10)
-diana.make_withdrawal(110)
-diana.display_user_balance()
+# calling on methods
+diana.make_deposit(100).make_deposit(5).make_deposit(10).make_withdrawal(110).display_user_balance()
+kiwi.make_deposit(100).make_deposit(50).make_withdrawal(20).make_withdrawal(40).display_user_balance()
+angelika.make_deposit(1000).make_withdrawal(500).make_withdrawal(300).make_withdrawal(199).display_user_balance()
 
-kiwi.make_deposit(100)
-kiwi.make_deposit(50)
-kiwi.make_withdrawal(20)
-kiwi.make_withdrawal(40)
-kiwi.display_user_balance()
-
-angelika.make_deposit(1000)
-angelika.make_withdrawal(500)
-angelika.make_withdrawal(300)
-angelika.make_withdrawal(199)
-angelika.display_user_balance()
-
-
+# priting a space between previous outputs, transfering money between two users.
 print("")
 diana.transfer_money(angelika, 5)
